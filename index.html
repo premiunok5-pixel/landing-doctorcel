@@ -15,7 +15,6 @@ align-items:center;
 height:100vh;
 margin:0;
 }
-
 .box{
 background:#111827;
 padding:30px;
@@ -24,7 +23,6 @@ width:320px;
 text-align:center;
 box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
-
 input{
 width:100%;
 padding:12px;
@@ -33,7 +31,6 @@ border-radius:8px;
 border:none;
 font-size:15px;
 }
-
 button{
 width:100%;
 padding:14px;
@@ -53,33 +50,30 @@ cursor:pointer;
 <h2>Revisión GRATIS del celular 📱</h2>
 <p>Dejanos tu WhatsApp y te escribimos</p>
 
-<input id="nombre" placeholder="Tu nombre">
-<input id="telefono" placeholder="Tu WhatsApp">
+<form id="formLead">
+<input name="nombre" placeholder="Tu nombre" required>
+<input name="telefono" placeholder="Tu WhatsApp" required>
+<button type="submit">QUIERO MI DIAGNOSTICO</button>
+</form>
 
-<button onclick="enviar()">QUIERO MI DIAGNOSTICO</button>
 </div>
 
 <script>
-function enviar(){
+document.getElementById("formLead").addEventListener("submit", function(e){
+e.preventDefault();
 
-let nombre = document.getElementById("nombre").value;
-let telefono = document.getElementById("telefono").value;
+var formData = new FormData(this);
 
 fetch("https://script.google.com/macros/s/AKfycbwWugtrBbM8v7cWp1-aHmuHmOkeb5S9ruDMWuq91GUGROdOZoj3UNI7rnYoEVUZcP4JUQ/exec", {
-  method: "POST",
-  mode: "no-cors",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    nombre: nombre,
-    telefono: telefono
-  })
+method: "POST",
+body: formData
 });
 
-let mensaje = "Hola! Soy " + nombre + " y quiero mi diagnóstico gratis 📱";
+var nombre = formData.get("nombre");
+var mensaje = "Hola! Soy " + nombre + " y quiero mi diagnóstico gratis 📱";
+
 window.location.href = "https://wa.me/5493454264608?text=" + encodeURIComponent(mensaje);
-}
+});
 </script>
 
 </body>
