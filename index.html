@@ -66,17 +66,19 @@ let nombre = document.getElementById("nombre").value;
 let telefono = document.getElementById("telefono").value;
 
 fetch("https://script.google.com/macros/s/AKfycbwWugtrBbM8v7cWp1-aHmuHmOkeb5S9ruDMWuq91GUGROdOZoj3UNI7rnYoEVUZcP4JUQ/exec", {
-method:"POST",
-body: JSON.stringify({
-nombre:nombre,
-telefono:telefono
-})
-})
+  method: "POST",
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    nombre: nombre,
+    telefono: telefono
+  })
+});
 
-.then(res => {
 let mensaje = "Hola! Soy " + nombre + " y quiero mi diagnóstico gratis 📱";
 window.location.href = "https://wa.me/5493454264608?text=" + encodeURIComponent(mensaje);
-})
 }
 </script>
 
