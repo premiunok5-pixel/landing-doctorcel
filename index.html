@@ -2,12 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Revisión Gratis del Celular</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
-font-family: Arial;
-background:#0f172a;
+font-family: Arial, Helvetica, sans-serif;
+background:linear-gradient(180deg,#020617,#0f172a);
 color:white;
 display:flex;
 justify-content:center;
@@ -15,31 +18,60 @@ align-items:center;
 height:100vh;
 margin:0;
 }
+
 .box{
 background:#111827;
-padding:30px;
-border-radius:12px;
-width:320px;
+padding:40px 25px;
+border-radius:18px;
+width:90%;
+max-width:380px;
 text-align:center;
-box-shadow:0 0 20px rgba(0,0,0,0.4);
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+animation: aparecer 0.6s ease;
 }
+
+@keyframes aparecer{
+from{opacity:0; transform:translateY(30px)}
+to{opacity:1; transform:translateY(0)}
+}
+
+h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+opacity:0.9;
+margin-bottom:25px;
+}
+
 input{
 width:100%;
-padding:12px;
+padding:16px;
 margin:10px 0;
-border-radius:8px;
+border-radius:10px;
 border:none;
-font-size:15px;
+font-size:18px;
 }
+
 button{
 width:100%;
-padding:14px;
+padding:18px;
+margin-top:10px;
 background:#22c55e;
 color:white;
 border:none;
-border-radius:8px;
-font-size:16px;
+border-radius:10px;
+font-size:20px;
+font-weight:bold;
 cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.03);
+background:#16a34a;
 }
 </style>
 </head>
@@ -53,9 +85,8 @@ cursor:pointer;
 <form id="formLead">
 <input name="nombre" placeholder="Tu nombre" required>
 <input name="telefono" placeholder="Tu WhatsApp" required>
-<button type="submit">QUIERO MI DIAGNOSTICO</button>
+<button type="submit">QUIERO MI DIAGNÓSTICO</button>
 </form>
-
 </div>
 
 <script>
@@ -64,7 +95,8 @@ e.preventDefault();
 
 var formData = new FormData(this);
 
-fetch("https://script.google.com/macros/s/AKfycbwWugtrBbM8v7cWp1-aHmuHmOkeb5S9ruDMWuq91GUGROdOZoj3UNI7rnYoEVUZcP4JUQ/exec", {
+// 👉 API NUEVA (LA CORRECTA)
+fetch("https://script.google.com/macros/s/AKfycbzvzXAQ0l0Tk0DaR-kTK4xpXkaOokD-zOIXVMi3VgpHGEC3z2T3iiZZ7p3El9fXw6kQIQ/exec", {
 method: "POST",
 body: formData
 });
