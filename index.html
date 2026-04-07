@@ -35,6 +35,12 @@ from{opacity:0; transform:translateY(30px)}
 to{opacity:1; transform:translateY(0)}
 }
 
+/* 🔵 LOGO */
+.logo{
+width:180px;
+margin-bottom:10px;
+}
+
 h2{
 font-size:28px;
 margin-bottom:10px;
@@ -79,6 +85,10 @@ background:#16a34a;
 <body>
 
 <div class="box">
+
+<!-- 🔵 TU LOGO -->
+<img src="logo.png" class="logo">
+
 <h2>Revisión GRATIS del celular 📱</h2>
 <p>Dejanos tu WhatsApp y te escribimos</p>
 
@@ -95,7 +105,6 @@ e.preventDefault();
 
 var formData = new FormData(this);
 
-// 👉 API NUEVA (LA CORRECTA)
 fetch("https://script.google.com/macros/s/AKfycbzvzXAQ0l0Tk0DaR-kTK4xpXkaOokD-zOIXVMi3VgpHGEC3z2T3iiZZ7p3El9fXw6kQIQ/exec", {
 method: "POST",
 body: formData
